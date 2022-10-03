@@ -1,8 +1,3 @@
 schemaVersion: 2.1.0
 metadata:
   name: devspaces
-projects:
-  - name: ocp-devspaces-proto
-    source:
-      type: git
-      location: 'https://github.com/MazArslan/ocp-devspaces-proto'
