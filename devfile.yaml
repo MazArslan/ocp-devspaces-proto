@@ -1,8 +1,30 @@
-apiVersion: 1.0.0
+schemaVersion: 2.1.0
 metadata:
   name: devspaces
 projects:
   - name: ocp-devspaces-proto
-    source:
-      type: git
-      location: 'https://github.com/MazArslan/ocp-devspaces-proto'
+    git:
+      remotes:
+        origin: 'https://github.com/MazArslan/ocp-devspaces-proto'
+      checkoutFrom:
+        revision: main
+commands:
+  - id: install
+    exec:
+      commandLine: npm install
+      component: runtime
+      workingDir: ${PROJECT_SOURCE}/react-app
+  - id: run
+    exec:
+      commandLine: npm run dev
+      component: runtime
+      workingDir: ${PROJECT_SOURCE}/react-app
+components:
+  - name: runtime
+    container:
+      image: registry.access.redhat.com/ubi8/nodejs-16:latest
+      args: ["tail", "-f", "/dev/null"]
+      memoryLimit: 1024Mi
+      endpoints:
+        - name: http-react
+          targetPort: 3000
