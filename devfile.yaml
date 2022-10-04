@@ -13,12 +13,12 @@ commands:
     exec:
       commandLine: npm install
       component: runtime
-      workingDir: ${PROJECT_SOURCE}/react-app
+      workingDir: ${PROJECT_SOURCE}/react-app/
   - id: run
     exec:
-      commandLine: npm run dev
+      commandLine: npm start
       component: runtime
-      workingDir: ${PROJECT_SOURCE}/react-app
+      workingDir: ${PROJECT_SOURCE}/react-app/
 components:
   - name: runtime
     container:
